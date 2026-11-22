@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Journey in Informatics Teacher Education - Tran Hai Sang</title>
+
+    <!-- Tải Tailwind CSS qua CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tải Font Be Vietnam Pro & Open Sans hỗ trợ tiếng Việt đẹp -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Cấu hình Tailwind tùy chỉnh bảng màu & font chữ -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0f294a",
+              navyLight: "#1c3f6e",
+              royal: "#2563eb",
+              amberWarm: "#f59e0b",
+              amberSoft: "#fef3c7",
+              crimson: "#dc2626",
+              crimsonSoft: "#fee2e2",
+              surface: "#f8fafc",
+            },
+            fontFamily: {
+              sans: ['"Be Vietnam Pro"', '"Open Sans"', "sans-serif"],
+              body: ['"Open Sans"', '"Be Vietnam Pro"', "sans-serif"],
+            },
+            boxShadow: {
+              card: "0 10px 30px -10px rgba(15, 41, 74, 0.12)",
+              cardHover: "0 18px 38px -12px rgba(37, 99, 235, 0.22)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="antialiased selection:bg-amberWarm/30 selection:text-navy">
+    <!-- ==================== THANH ĐIỀU HƯỚNG (NAVBAR) ==================== -->
+    <header
+      class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+          <!-- Logo & Tên thương hiệu -->
+          <a
+            href="#home"
+            onclick="setActiveTab('home')"
+            class="flex items-center gap-3 group focus:outline-none"
+          >
+            <div
+              class="w-10 h-10 md:w-11 md:h-11 rounded-2xl bg-gradient-to-br from-navy via-royal to-amberWarm p-[2px] shadow-md group-hover:scale-105 transition-transform"
+            >
+              <div
+                class="w-full h-full bg-navy rounded-[14px] flex items-center justify-center text-white font-heading font-extrabold text-sm md:text-base tracking-tight"
+              >
+                THS
+              </div>
+            </div>
+            <div class="leading-tight">
+              <div
+                class="font-heading font-extrabold text-navy text-sm md:text-base tracking-wide group-hover:text-royal transition-colors"
+              >
+                TRAN HAI SANG
+              </div>
+              <div
+                class="text-[11px] md:text-xs font-medium text-slate-500 hidden sm:block"
+              >
+                Informatics Teacher Education
+              </div>
+            </div>
+          </a>
+
+          <!-- Menu Desktop -->
+          <nav
+            class="hidden lg:flex items-center gap-1"
+            aria-label="Điều hướng chính"
+          >
+            <button
+              type="button"
+              data-nav="home"
+              onclick="setActiveTab('home')"
+              class="nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-navy hover:bg-blue-50 hover:text-royal transition-all"
+            >
+              Trang chủ
+            </button>
+            <button
+              type="button"
+              data-nav="about"
+              onclick="setActiveTab('about')"
+              class="nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-royal transition-all"
+            >
+              Hồ sơ &amp; Kỹ năng
+            </button>
+            <button
+              type="button"
+              data-nav="projects"
+              onclick="setActiveTab('projects')"
+              class="nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-royal transition-all"
+            >
+              Dự án
+            </button>
+            <button
+              type="button"
+              data-nav="teaching"
+              onclick="setActiveTab('teaching')"
+              class="nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-royal transition-all"
+            >
+              Học liệu
+            </button>
+            <button
+              type="button"
+              data-nav="activities"
+              onclick="setActiveTab('activities')"
+              class="nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-blue-50 hover:text-royal transition-all"
+            >
+              Hoạt động &amp; Liên hệ
+            </button>
+          </nav>
+
+          <!-- Nút nhanh & Nút mở menu Mobile -->
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              onclick="setActiveTab('activities')"
+              class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amberWarm hover:bg-amber-500 text-navy font-heading font-bold text-xs lg:text-sm shadow-sm hover:shadow transition-all"
+            >
+              <span>Kết nối ngay</span>
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </button>
+
+            <button
+              id="mobile-menu-btn"
+              type="button"
+              onclick="toggleMobileMenu()"
+              class="lg:hidden p-3 rounded-xl text-navy hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-royal"
+              aria-label="Mở menu điều hướng"
+              aria-expanded="false"
+            >
+              <svg
+                id="icon-hamburger"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              <svg
+                id="icon-close"
+                class="w-6 h-6 hidden"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu Mobile xổ xuống -->
+        <div
+          id="mobile-menu"
+          class="lg:hidden hidden pb-4 pt-2 border-t border-slate-100 space-y-1"
+        >
+          <button
+            type="button"
+            data-nav="home"
+            onclick="setActiveTab('home')"
+            class="mobile-nav-link w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-navy bg-blue-50/70"
+          >
+            🏠 Trang chủ (Home)
+          </button>
+          <button
+            type="button"
+            data-nav="about"
+            onclick="setActiveTab('about')"
+            class="mobile-nav-link w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            🎓 Hồ sơ &amp; Kỹ năng (About &amp; Skills)
+          </button>
+          <button
+            type="button"
+            data-nav="projects"
+            onclick="setActiveTab('projects')"
+            class="mobile-nav-link w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            💻 Dự án Công nghệ (My Projects)
+          </button>
+          <button
+            type="button"
+            data-nav="teaching"
+            onclick="setActiveTab('teaching')"
+            class="mobile-nav-link w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            📘 Góc Sư phạm &amp; Học liệu (Teaching &amp; Resources)
+          </button>
+          <button
+            type="button"
+            data-nav="activities"
+            onclick="setActiveTab('activities')"
+            class="mobile-nav-link w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            🌟 Hoạt động &amp; Liên hệ (Activities &amp; Contact)
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== 1. TRANG CHỦ (HOME) ==================== -->
+    <section id="home" class="page-section pt-4 pb-16 md:pt-8 md:pb-24">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 md:space-y-20"
+      >
+        <!-- Banner mở đầu nổi bật -->
+        <div
+          class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-[#153864] to-royal text-white shadow-xl border border-blue-900/30"
+        >
+          <!-- Các mảng trang trí ánh sáng tươi vui -->
+          <div
+            class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-amberWarm/25 blur-2xl pointer-events-none"
+          ></div>
+          <div
+            class="absolute -bottom-20 -left-16 w-72 h-72 rounded-full bg-crimson/20 blur-2xl pointer-events-none"
+          ></div>
+          <div
+            class="hidden md:block absolute top-8 right-10 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-semibold text-amber-200"
+          >
+            ✦ Sư phạm Tin học K50 - Đại học Cần Thơ ✦
+          </div>
+
+          <div
+            class="relative z-10 px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8"
+          >
+            <div class="max-w-3xl space-y-4">
+              <span
+                class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amberWarm text-navy font-heading font-bold text-xs uppercase tracking-wider shadow"
+              >
+                Portfolio Cá Nhân &amp; Học Thuật
+              </span>
+              <h1
+                class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white uppercase drop-shadow-sm"
+              >
+                TRAN HAI SANG
+              </h1>
+              <div
+                class="w-28 h-1.5 bg-gradient-to-r from-crimson via-amberWarm to-amber-300 rounded-full mx-auto md:mx-0"
+              ></div>
+              <p
+                class="font-heading font-semibold text-lg sm:text-2xl text-blue-100 leading-snug"
+              >
+                My Journey in Informatics Teacher Education
+              </p>
+              <p
+                class="text-sm sm:text-base text-blue-100/90 max-w-2xl leading-relaxed"
+              >
+                Những ký tự lạnh lùng, những dấu ngoặc vuông vắn và quy tắc
+                nghiêm ngặt, chờ đợi bàn tay người gieo chữ thổi vào chút hơi ấm
+                để hóa thành bài học sinh động.
+              </p>
+            </div>
+
+            <!-- Huy hiệu điểm nhấn bên phải trên màn hình lớn -->
+            <div
+              class="hidden xl:flex flex-col gap-3 w-72 shrink-0 bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-5"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-amberWarm/20 text-amber-300 flex items-center justify-center font-bold text-lg"
+                >
+                  💻
+                </div>
+                <div>
+                  <div class="text-xs text-blue-200">
+                    Lập trình &amp; Hệ thống
+                  </div>
+                  <div class="font-heading font-bold text-sm text-white">
+                    Python • C
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-crimson/25 text-red-200 flex items-center justify-center font-bold text-lg"
+                >
+                  🎓
+                </div>
+                <div>
+                  <div class="text-xs text-blue-200">Bài hát yêu thích</div>
+                  <div class="font-heading font-bold text-sm text-white">
+                    <a href="https://youtu.be/DtmlRxAHuoQ?si=ciepMoVob2AJjfS7"
+                      >Đường đến ngày vinh quang</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-royal/40 text-blue-100 flex items-center justify-center font-bold text-lg"
+                >
+                  🌱
+                </div>
+                <div>
+                  <div class="text-xs text-blue-200">Sở thích</div>
+                  <div class="font-heading font-bold text-sm text-white">
+                    Chụp ảnh &amp; Công tác thiện nguyện
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phần "ABOUT ME" bố cục 2 cột -->
+        <div
+          class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200/70"
+        >
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          >
+            <!-- Cột trái: Khung ảnh chân dung anime (SVG minh họa sinh viên sư phạm mặc áo cử nhân xanh navy viền đỏ) -->
+            <div class="lg:col-span-5 flex flex-col items-center">
+              <div
+                class="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-amberSoft via-yellow-50 to-blue-50 p-4 border-2 border-amberWarm/40 shadow-md"
+              >
+                <!-- Nhãn trang trí góc trên -->
+                <div class="flex items-center justify-between mb-3 px-1">
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-navy text-white text-[11px] font-semibold"
+                  >
+                    <span>✨</span> My Avatar
+                  </span>
+                </div>
+
+                <!-- SVG Minh họa tươi vui phong cách anime sinh viên sư phạm Tin học -->
+                <div
+                  class="animate-float-slow rounded-2xl overflow-hidden bg-gradient-to-b from-sky-100 via-amber-50 to-emerald-50 border border-white shadow-inner"
+                >
+                  <img src="/img/1.png" alt="" />
+                </div>
+
+                <!-- Chú thích dễ thay ảnh thực tế -->
+                <p class="mt-3 text-center">
+                  <span class="font-bold text-navy">Trần Hải Sang</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Cột phải: Lời giới thiệu ấm áp, năng động -->
+            <div class="lg:col-span-7 space-y-5">
+              <div
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-royal font-heading font-bold text-xs uppercase tracking-wider"
+              >
+                <span>👋</span> About Me!
+              </div>
+
+              <h2
+                class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-navy leading-tight"
+              >
+                Biến tư duy Tin học thành những bài học
+                <span class="text-royal">sáng tạo</span> &amp;
+                <span class="text-amberWarm">gần gũi</span>
+              </h2>
+
+              <div
+                class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed font-body"
+              >
+                <p>
+                  Mình là <strong class="text-navy">Trần Hải Sang</strong>, sinh
+                  viên ngành
+                  <strong class="text-navy">Sư phạm Tin học K50</strong> tại
+                  <strong class="text-navy"
+                    >Trường Sư phạm – Đại học Cần Thơ</strong
+                  >.
+                </p>
+                <p>
+                  Với mình, Tin học không chỉ là những dòng mã lệnh, cấu trúc dữ
+                  liệu hay thuật toán phức tạp, mà là chiếc chìa khóa mở ra tư
+                  duy logic, khả năng giải quyết vấn đề và niềm hứng thú khám
+                  phá cho học sinh. Mình yêu thích việc kết hợp lập trình, hệ
+                  thống học tập số cùng phương pháp giảng dạy trực quan để mỗi
+                  tiết học đều trở nên sinh động, dễ hiểu và truyền cảm hứng.
+                </p>
+                <p>
+                  Trang portfolio này là nơi mình lưu giữ hành trình trưởng
+                  thành nghề nghiệp của bản thân mình: từ các trải nghiệm thực
+                  tế, học liệu Tin học phổ thông cho đến những trải nghiệm đứng
+                  lớp và những hoạt động mà mình yêu thích.
+                </p>
+              </div>
+
+              <!-- Thẻ điểm nhấn nhanh -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div
+                  class="rounded-2xl bg-blue-50/80 border border-blue-100 p-3.5"
+                >
+                  <div class="font-heading font-extrabold text-xl text-royal">
+                    K50 - SoE - CTU
+                  </div>
+                  <div class="text-xs text-slate-600 mt-0.5">
+                    <p>Sư phạm Tin học</p>
+                    <p>Trường Sư phạm, ĐHCT</p>
+                  </div>
+                </div>
+                <div
+                  class="rounded-2xl bg-amberSoft/80 border border-amber-200 p-3.5"
+                >
+                  <div
+                    class="font-heading font-extrabold text-xl text-amber-700"
+                  >
+                    Học liệu số
+                  </div>
+                  <div class="text-xs text-slate-600 mt-0.5">
+                    WebQuest, OKMindmap, E-Learning, ...
+                  </div>
+                </div>
+                <div
+                  class="rounded-2xl bg-red-50/80 border border-red-100 p-3.5"
+                >
+                  <div class="font-heading font-extrabold text-xl text-crimson">
+                    Nghề giáo
+                  </div>
+                  <div class="text-xs text-slate-600 mt-0.5">
+                    Yêu nghề, thương trò
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lộ trình 3 thẻ nổi bật -->
+        <div class="space-y-6">
+          <div
+            class="flex flex-col sm:flex-row sm:items-end justify-between gap-2"
+          >
+            <div>
+              <span
+                class="text-xs font-heading font-bold uppercase tracking-wider text-royal"
+                >Hành trình</span
+              >
+              <h3
+                class="font-heading font-extrabold text-2xl sm:text-3xl text-navy"
+              >
+                3 Trụ cột trên chặng đường Sư phạm Tin học
+              </h3>
+            </div>
+            <button
+              type="button"
+              onclick="setActiveTab('about')"
+              class="text-sm font-heading font-bold text-royal hover:underline self-start sm:self-auto"
+            >
+              Xem chi tiết hồ sơ &amp; kỹ năng →
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Thẻ 1 - Học tập & Nghiên cứu -->
+            <div
+              class="group bg-white rounded-3xl p-6 sm:p-7 shadow-card hover:shadow-cardHover border border-slate-200/70 transition-all hover:-translate-y-1 flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-2xl bg-blue-100 text-royal flex items-center justify-center text-2xl mb-5 group-hover:scale-105 transition-transform"
+                >
+                  🎓
+                </div>
+                <h4 class="font-heading font-extrabold text-xl text-navy mb-2">
+                  Học tập &amp; Nghiên cứu
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                  Sinh viên
+                  <strong
+                    >Sư phạm Tin học K50 – Trường Sư phạm, ĐH Cần Thơ</strong
+                  >. Rèn luyện vững vàng nền tảng khoa học máy tính, phương pháp
+                  dạy học Tin học và ứng dụng công nghệ giáo dục.
+                </p>
+              </div>
+              <div
+                class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100"
+              >
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold"
+                  >Sư phạm Tin học K50</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-blue-50 text-royal text-xs font-semibold"
+                  >Đại học Cần Thơ</span
+                >
+              </div>
+            </div>
+
+            <!-- Thẻ 2 - Kỹ năng-->
+            <div
+              class="group bg-white rounded-3xl p-6 sm:p-7 shadow-card hover:shadow-cardHover border border-slate-200/70 transition-all hover:-translate-y-1 flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-2xl bg-amberSoft text-amber-700 flex items-center justify-center text-2xl mb-5 group-hover:scale-105 transition-transform"
+                >
+                  ⚙️
+                </div>
+                <h4 class="font-heading font-extrabold text-xl text-navy mb-2">
+                  Kỹ năng
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                  Sử dụng thành thạo các phần mềm văn phòng, phục vụ dạy học
+                  <strong>Word, Excel, PowerPoint</strong>, tìm hiểu sâu các
+                  ngôn ngữ lập trình <strong>C, Python</strong> phân tích
+                  <strong>Thuật toán &amp; Đồ thị</strong>
+                  và triển khai hệ thống số phục vụ học tập.
+                </p>
+              </div>
+              <div
+                class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100"
+              >
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-amberSoft text-amber-800 text-xs font-semibold"
+                  >Python &amp; C</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold"
+                  >Đồ thị &amp; Công cụ số</span
+                >
+              </div>
+            </div>
+
+            <!-- Thẻ 3 - Trải nghiệm sư phạm-->
+            <div
+              class="group bg-white rounded-3xl p-6 sm:p-7 shadow-card hover:shadow-cardHover border border-slate-200/70 transition-all hover:-translate-y-1 flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-2xl bg-crimsonSoft text-crimson flex items-center justify-center text-2xl mb-5 group-hover:scale-105 transition-transform"
+                >
+                  🏫
+                </div>
+                <h4 class="font-heading font-extrabold text-xl text-navy mb-2">
+                  Trải nghiệm Sư phạm
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                  <strong
+                    >Kiến tập sư phạm tại Trường THCS - THPT Long Khánh, Đồng
+                    Tháp</strong
+                  >, đây là khoảng thời gian để có cơ hội lần đầu tiếp xúc với
+                  học sinh, học hỏi các phương pháp từ giáo viên.
+                </p>
+              </div>
+              <div
+                class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100"
+              >
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-crimsonSoft text-crimson text-xs font-semibold"
+                  >Kiến tập sư phạm</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold"
+                  >THCS - THPT Long Khánh</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. HỒ SƠ & KỸ NĂNG (ABOUT & SKILLS) ==================== -->
+    <section id="about" class="page-section pt-6 pb-16 md:pt-10 md:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <!-- Tiêu đề khu vực -->
+        <div
+          class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200/70"
+        >
+          <div class="max-w-3xl space-y-3">
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-royal font-heading font-bold text-xs uppercase tracking-wider"
+            >
+              🎓 Năng lực chuyên môn
+            </span>
+            <h2
+              class="font-heading font-extrabold text-2xl sm:text-4xl text-navy"
+            >
+              Hành trình rèn luyện Sư phạm Tin học &amp; Công nghệ
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Từ sinh viên
+              <strong
+                >Sư phạm Tin học K50 – Trường Sư phạm, Đại học Cần Thơ</strong
+              >
+              đến quá trình kiến tập sư phạm, mình định hướng trở thành một giáo
+              viên Tin học hiện đại: vững chuyên môn, am hiểu công cụ giáo dục
+              số và luôn tạo không khí lớp học tích cực.
+            </p>
+          </div>
+
+          <!-- Mốc thời gian rèn luyện -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8 pt-8 border-t border-slate-100"
+          >
+            <div class="rounded-2xl bg-slate-50 p-5 border border-slate-200/70">
+              <div class="text-xs font-heading font-bold text-royal uppercase">
+                Nền tảng học thuật
+              </div>
+              <div class="font-heading font-bold text-lg text-navy mt-1">
+                Giảng đường sư phạm
+              </div>
+              <p
+                class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed"
+              >
+                Đào tạo chuyên sâu về tâm lý học sinh, kiến thức chuyên môn và
+                phương pháp dạy học.
+              </p>
+            </div>
+            <div
+              class="rounded-2xl bg-amberSoft/50 p-5 border border-amber-200/70"
+            >
+              <div
+                class="text-xs font-heading font-bold text-amber-800 uppercase"
+              >
+                Tiếp cận học sinh
+              </div>
+              <div class="font-heading font-bold text-lg text-navy mt-1">
+                Kiến tập sư phạm
+              </div>
+              <p
+                class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed"
+              >
+                Trải nghiệm thực tế tại Nhà trường phổ thông, tiếp xúc với học
+                sinh, đồng nghiệp.
+              </p>
+            </div>
+            <div
+              class="rounded-2xl bg-blue-50/50 p-5 border border-blue-200/70"
+            >
+              <div class="text-xs font-heading font-bold text-royal uppercase">
+                Định hướng nghề nghiệp
+              </div>
+              <div class="font-heading font-bold text-lg text-navy mt-1">
+                Giáo viên Tin học
+              </div>
+              <p
+                class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed"
+              >
+                Xây dựng các bài giảng Tin học sinh động, ứng dụng công cụ tự
+                động hóa và hệ thống học tập trực tuyến giúp học sinh tiếp cận
+                kiến thức.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. DỰ ÁN CÔNG NGHỆ (MY PROJECTS) ==================== -->
+    <section id="projects" class="page-section pt-6 pb-16 md:pt-10 md:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <!-- Header & Bộ lọc danh mục -->
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-6 bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200/70"
+        >
+          <div class="max-w-2xl space-y-2">
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amberSoft text-amber-800 font-heading font-bold text-xs uppercase tracking-wider"
+            >
+              💻 My Projects — Sản phẩm thực tiễn
+            </span>
+            <h2
+              class="font-heading font-extrabold text-2xl sm:text-4xl text-navy"
+            >
+              Dự án của tôi
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Sự dồi dào của WebQuest nằm ở khả năng quy tụ đa dạng nguồn học
+              liệu số, biến hóa linh hoạt theo từng môn học và cấp độ người học.
+              Từ kịch bản nhập vai, công cụ trực quan đến sản phẩm sáng tạo cuối
+              chặng, mô hình này mở ra không gian khám phá phong phú để mỗi hành
+              trình học tập đều có chiều sâu và sức sống riêng.
+            </p>
+          </div>
+          <!-- Bên phải: Ảnh mã QR -->
+          <div class="shrink-0 text-center">
+            <img
+              src="/img/bigbook.png"
+              alt="Mã QR"
+              class="w-32 h-32 sm:w-36 sm:h-36 object-contain rounded-xl border border-slate-200 p-2 bg-white"
+              style="margin-left: 25px"
+            />
+            <p style="font-weight: bold; margin-right: 100px">
+              Tran Hai Sang's BigBook
+            </p>
+          </div>
+        </div>
+
+        <!-- Lưới danh sách 6 dự án tiêu biểu (render động bằng JS để dễ quản lý & mở modal) -->
+        <div
+          id="projects-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. GÓC SƯ PHẠM & HỌC LIỆU (TEACHING & RESOURCES) ==================== -->
+    <section id="teaching" class="page-section pt-6 pb-16 md:pt-10 md:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <!-- Header -->
+        <div
+          class="bg-white rounded-3xl p-6 sm:p-10 shadow-card border border-slate-200/70"
+        >
+          <span
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-royal font-heading font-bold text-xs uppercase tracking-wider"
+          >
+            📘 Học liệu
+          </span>
+          <h2
+            class="font-heading font-extrabold text-2xl sm:text-4xl text-navy mt-2"
+          >
+            Góc Học liệu
+          </h2>
+          <p
+            class="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl leading-relaxed"
+          >
+            Nơi chia sẻ tài liệu học tập và trải nghiệm thực tế tại
+            <strong>Trường THCS - THPT Long Khánh, Đồng Tháp</strong>.
+          </p>
+        </div>
+
+        <!-- Khối 1: Tài liệu các học phần -->
+        <div class="space-y-5">
+          <div class="flex items-center justify-between">
+            <h3
+              class="font-heading font-extrabold text-xl sm:text-2xl text-navy"
+            >
+              1. Tài liệu các học phần
+            </h3>
+            <span
+              class="hidden sm:inline-block text-xs font-semibold text-slate-500"
+              >Định hướng phát triển năng lực số</span
+            >
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Học phần Giáo dục đại cương -->
+            <a
+              href="https://drive.google.com/drive/folders/1uH5zeZMBsCJkpoj-2Rx54bkhXPr0I49N?usp=sharing"
+              ><div
+                class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+              >
+                <span
+                  class="inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-royal text-xs font-bold mb-3"
+                  >Đại cương</span
+                >
+                <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                  Học phần Giáo dục đại cương
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Bao gồm các học phần bắt buộc đại cương như các môn chính trị,
+                  ngoại ngữ, thể chất, Năng lực số ứng dụng, ...
+                </p>
+              </div></a
+            >
+
+            <!-- <div
+              class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+            >
+              <span
+                class="inline-block px-2.5 py-1 rounded-lg bg-amberSoft text-amber-800 text-xs font-bold mb-3"
+                >Giáo dục</span
+              >
+              <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                Học phần Giáo dục đại cương
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Bao gồm các học phần về tâm lý học, hoạt động giáo dục trong nhà
+                trường phổ thông, quản lý hành chí nhà nước và quản lý ngành
+                giáo dục và đào tạo, ...
+              </p>
+            </div> -->
+            <!-- Học phần cơ sở ngành -->
+            <a
+              href="https://drive.google.com/drive/folders/1z4gaNTd5X9_sTFT-lgZ4MeQdq2ns5oXq?usp=sharing"
+              ><div
+                class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+              >
+                <span
+                  class="inline-block px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-bold mb-3"
+                  >Cơ sở ngành</span
+                >
+                <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                  Học phần cơ sở ngành
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Bao gồm các học phần về cơ sở ngành như Tâm lý học sư phạm,
+                  Xác suất thống kê - Toán, Lập trình căn bản A, ...
+                </p>
+              </div></a
+            >
+            <!-- Học phần chuyên ngành -->
+            <a
+              href="https://drive.google.com/drive/folders/1HX2TRNVLuKoIqLZU_T-qYRQsWFLC00Gh?usp=sharing"
+              ><div
+                class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+              >
+                <span
+                  class="inline-block px-2.5 py-1 rounded-lg bg-crimsonSoft text-crimson text-xs font-bold mb-3"
+                  >Chuyên ngành</span
+                >
+                <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                  Học phần chuyên ngành
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Bao gồm các học phần về phương pháp giảng dạy và các học phần
+                  chuyên ngành Công nghệ thông tin, ...
+                </p>
+              </div></a
+            >
+          </div>
+        </div>
+
+        <!-- Khối 2: Kế hoạch bài dạy & chuyên đề & đề kiểm tra -->
+        <div class="space-y-5">
+          <div class="flex items-center justify-between">
+            <h3
+              class="font-heading font-extrabold text-xl sm:text-2xl text-navy"
+            >
+              2. Kế hoạch bài dạy &amp; Chuyên đề &amp; Đề kiểm tra Tin học phổ
+              thông
+            </h3>
+            <span
+              class="hidden sm:inline-block text-xs font-semibold text-slate-500"
+              >Định hướng phát triển năng lực số</span
+            >
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Kế hoạch bài dạy -->
+            <a
+              href="https://drive.google.com/drive/folders/12edXmitjzje0ELwrMh8ZFQJgUkejvcPC?usp=sharing"
+              ><div
+                class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+              >
+                <span
+                  class="inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-royal text-xs font-bold mb-3"
+                  >Kế hoạch bài dạy</span
+                >
+                <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                  Kế hoạch bài giảng & Bài giảng điện tử
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Bao gồm tài liệu giảng dạy môn Tin học của các khối lớp.
+                </p>
+              </div></a
+            >
+            <!-- Sách giáo khoa - Chuyên đề Tin học -->
+            <a
+              href="https://drive.google.com/drive/folders/1UjOHDzUhL7CWBz559oyOxZ-m07o5sFI9?usp=sharing"
+              ><div
+                class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+              >
+                <span
+                  class="inline-block px-2.5 py-1 rounded-lg bg-amberSoft text-amber-800 text-xs font-bold mb-3"
+                  >Chuyên đề</span
+                >
+                <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                  Sách giáo khoa - Chuyên đề Tin học
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Bao gồm sách giáo khoa và các chuyên đề môn Tin học của các
+                  khối lớp.
+                </p>
+              </div></a
+            >
+            <!-- Kho đề kiểm tra -->
+            <a
+              href="https://drive.google.com/drive/folders/1muaIUlloI-UwwshiduL4oWBtyGi7R7zn?usp=sharing"
+            >
+              <div
+                class="bg-white rounded-2xl p-5 shadow-card border border-slate-200/70 hover:border-royal/40 transition-all"
+              >
+                <span
+                  class="inline-block px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-bold mb-3"
+                  >Đề thi</span
+                >
+                <h4 class="font-heading font-bold text-base text-navy mb-1.5">
+                  Kho đề kiểm tra
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Bao gồm các đề kiểm tra môn Tin học của các khối lớp.
+                </p>
+              </div></a
+            >
+          </div>
+        </div>
+
+        <!-- Khối 3: Học liệu tương tác & trực quan hóa -->
+        <div class="space-y-5">
+          <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-navy">
+            3. Học liệu tương tác &amp; Trực quan hóa
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="https://okmindmap.ctu.edu.vn/">
+              <div
+                class="bg-white rounded-3xl p-6 shadow-card border border-slate-200/70 flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-amberSoft text-amber-800 flex items-center justify-center text-xl mb-4"
+                  >
+                    🧠
+                  </div>
+                  <h4 class="font-heading font-bold text-lg text-navy mb-2">
+                    Sơ đồ tư duy OKMindmap
+                  </h4>
+                  <p class="text-sm text-slate-600 leading-relaxed">
+                    Hệ thống hóa kiến thức trọng tâm từng chủ đề Tin học bằng sơ
+                    đồ phân nhánh rõ ràng, hỗ trợ học sinh ôn tập nhanh trước
+                    giờ kiểm tra.
+                  </p>
+                </div>
+                <div
+                  class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-amber-800"
+                >
+                  • Tóm tắt kiến thức &amp; liên kết khái niệm
+                </div>
+              </div>
+            </a>
+
+            <a href="https://scratch.mit.edu/">
+              <div
+                class="bg-white rounded-3xl p-6 shadow-card border border-slate-200/70 flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-blue-100 text-royal flex items-center justify-center text-xl mb-4"
+                  >
+                    🐱
+                  </div>
+                  <h4 class="font-heading font-bold text-lg text-navy mb-2">
+                    Dự án Scratch tương tác
+                  </h4>
+                  <p class="text-sm text-slate-600 leading-relaxed">
+                    Các kịch bản hoạt hình và trò chơi đố vui lập trình khối
+                    giúp học sinh làm quen biến, điều kiện và sự kiện một cách
+                    hào hứng.
+                  </p>
+                </div>
+                <div
+                  class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-royal"
+                >
+                  • Học qua chơi • Phản hồi trực quan tức thì
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Khối 3: Nhật ký Thực tập Sư phạm tại THCS - THPT Long Khánh, Đồng Tháp -->
+        <div
+          class="bg-gradient-to-br from-navy to-navyLight text-white rounded-3xl p-6 sm:p-10 shadow-xl"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6"
+          >
+            <div>
+              <span
+                class="inline-block px-3 py-1 rounded-full bg-amberWarm text-navy font-heading font-bold text-xs uppercase"
+              >
+                Nhật ký Thực tập Sư phạm
+              </span>
+              <h3 class="font-heading font-extrabold text-2xl sm:text-3xl mt-2">
+                THCS - THPT Long Khánh, Đồng Tháp
+              </h3>
+            </div>
+            <span class="text-xs sm:text-sm text-blue-200 font-medium">
+              Góc nhìn thực tế trên lớp &amp; cùng học sinh
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div
+              class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5"
+            >
+              <div class="text-xs font-bold text-amber-300 uppercase mb-1.5">
+                Tiết học đầu tiên
+              </div>
+              <h4 class="font-heading font-bold text-base text-white mb-2">
+                Vượt qua hồi hộp để kết nối
+              </h4>
+              <p class="text-xs sm:text-sm text-blue-100 leading-relaxed">
+                Khi bước lên bục giảng tại Long Khánh, điều giúp mình tự tin
+                nhất là ánh mắt tò mò và sự cổ vũ của các em học sinh. đặt câu
+                hỏi gợi mở giúp lớp học bớt căng thẳng và sôi nổi hơn.
+              </p>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5"
+            >
+              <div class="text-xs font-bold text-amber-300 uppercase mb-1.5">
+                Phòng thực hành Tin học
+              </div>
+              <h4 class="font-heading font-bold text-base text-white mb-2">
+                Gỡ rối từng dòng code cùng học sinh
+              </h4>
+              <p class="text-xs sm:text-sm text-blue-100 leading-relaxed">
+                Mỗi em có tốc độ tiếp thu khác nhau. Kiên nhẫn đi từng dãy máy,
+                hướng dẫn các em tự tìm nguyên nhân lỗi cú pháp giúp học sinh
+                nhớ lâu và tự hào khi chạy được chương trình đầu tiên.
+              </p>
+            </div>
+
+            <div
+              class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5"
+            >
+              <div class="text-xs font-bold text-amber-300 uppercase mb-1.5">
+                Bài học làm nghề
+              </div>
+              <h4 class="font-heading font-bold text-base text-white mb-2">
+                Giáo dục là hành trình lắng nghe
+              </h4>
+              <p class="text-xs sm:text-sm text-blue-100 leading-relaxed">
+                Thực tập tại THCS - THPT Long Khánh giúp mình hiểu sâu hơn về sự
+                kiên nhẫn, chuẩn mực sư phạm và niềm vui khi thấy học sinh tiến
+                bộ từng ngày.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. HOẠT ĐỘNG & LIÊN HỆ (ACTIVITIES & CONTACT) ==================== -->
+    <section id="activities" class="page-section pt-6 pb-20 md:pt-10 md:pb-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <!-- Khu vực Liên hệ có form gửi lời nhắn tương tác & liên kết -->
+        <div
+          id="contact"
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+        >
+          <!-- Cột trái: Thông tin & Liên kết mạng xã hội / học thuật -->
+          <div
+            class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-slate-200/70 space-y-6"
+          >
+            <div>
+              <span
+                class="text-xs font-heading font-bold uppercase tracking-wider text-royal"
+                >Kết nối cùng Hải Sang</span
+              >
+              <h3 class="font-heading font-extrabold text-2xl text-navy mt-1">
+                Thông tin Liên hệ
+              </h3>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                Trao đổi về tài liệu Tin học, dự án lập trình hoặc hợp tác
+                truyền thông – sự kiện.
+              </p>
+            </div>
+
+            <div class="space-y-3.5 text-sm">
+              <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                <span class="text-lg">🎓</span>
+                <div>
+                  <div class="font-heading font-bold text-navy">
+                    Đơn vị đào tạo
+                  </div>
+                  <div class="text-slate-600">
+                    Trường Sư phạm - Đại học Cần Thơ
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                <span class="text-lg">📞</span>
+                <div>
+                  <div class="font-heading font-bold text-navy">
+                    Số điện thoại
+                  </div>
+                  <div class="text-slate-600">0839010106</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50">
+                <span class="text-lg">📨</span>
+                <div>
+                  <div class="font-heading font-bold text-navy">
+                    Email liên hệ
+                  </div>
+                  <div class="text-slate-600">
+                    sangb2408108@student.ctu.edu.vn
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Liên kết mạng xã hội / học thuật -->
+            <div class="pt-2">
+              <div
+                class="text-xs font-heading font-bold uppercase tracking-wider text-slate-500 mb-3"
+              >
+                Kênh học thuật &amp; mạng xã hội
+              </div>
+              <div class="flex flex-wrap gap-2.5">
+                <a
+                  href="https://github.com/SangCTU"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-navy hover:bg-navyLight text-white text-xs sm:text-sm font-heading font-bold transition-colors"
+                >
+                  <span>GitHub</span>
+                  <span>↗</span>
+                </a>
+                <!-- <a
+                  href="https://colab.research.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amberWarm hover:bg-amber-400 text-navy text-xs sm:text-sm font-heading font-bold transition-colors"
+                >
+                  <span>Google Colab</span>
+                  <span>↗</span>
+                </a> -->
+                <a
+                  href="https://www.facebook.com/tranhai.sang.1106"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-royal text-xs sm:text-sm font-heading font-bold transition-colors"
+                >
+                  <span>Facebook</span>
+                  <span>↗</span>
+                </a>
+                <!-- <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-navy text-xs sm:text-sm font-heading font-bold transition-colors"
+                >
+                  <span>LinkedIn</span>
+                  <span>↗</span>
+                </a> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột phải: Form gửi lời nhắn tương tác -->
+          <div
+            class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-card border border-slate-200/70"
+          >
+            <h3 class="font-heading font-extrabold text-2xl text-navy mb-2">
+              Gửi lời nhắn cho Trần Hải Sang
+            </h3>
+            <p class="text-sm text-slate-600 mb-6">
+              Để lại lời nhắn, câu hỏi về học liệu Tin học hoặc góp ý cho trang
+              portfolio này nhé!
+            </p>
+
+            <form
+              id="contact-form"
+              onsubmit="handleContactSubmit(event)"
+              class="space-y-4"
+            >
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="sender-name"
+                    class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-1.5"
+                  >
+                    Họ và tên *
+                  </label>
+                  <input
+                    id="sender-name"
+                    type="text"
+                    required
+                    placeholder="Ví dụ: Nguyễn Minh Khoa"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-royal focus:ring-2 focus:ring-royal/20 outline-none text-sm text-navy transition-all"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="sender-email"
+                    class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-1.5"
+                  >
+                    Email của bạn *
+                  </label>
+                  <input
+                    id="sender-email"
+                    type="email"
+                    required
+                    placeholder="tenban@email.com"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-royal focus:ring-2 focus:ring-royal/20 outline-none text-sm text-navy transition-all"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="message-topic"
+                  class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-1.5"
+                >
+                  Chủ đề quan tâm
+                </label>
+                <select
+                  id="message-topic"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-royal focus:ring-2 focus:ring-royal/20 outline-none text-sm text-navy transition-all"
+                >
+                  <option value="Học liệu & Giảng dạy Tin học">
+                    Học liệu &amp; Giảng dạy Tin học
+                  </option>
+                  <option value="Dự án Công nghệ & Lập trình">
+                    Dự án Công nghệ &amp; Lập trình
+                  </option>
+                  <option value="Thực tập Sư phạm & Đồng Tháp">
+                    Thực tập Sư phạm &amp; Đồng Tháp
+                  </option>
+                  <option value="Hoạt động Đoàn - Hội & Sự kiện">
+                    Hoạt động Đoàn - Hội &amp; Sự kiện
+                  </option>
+                  <option value="Trao đổi khác">Trao đổi khác</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="sender-message"
+                  class="block text-xs font-heading font-bold text-navy uppercase tracking-wider mb-1.5"
+                >
+                  Nội dung lời nhắn *
+                </label>
+                <textarea
+                  id="sender-message"
+                  rows="4"
+                  required
+                  placeholder="Nhập lời nhắn của bạn tại đây..."
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-royal focus:ring-2 focus:ring-royal/20 outline-none text-sm text-navy transition-all resize-y"
+                ></textarea>
+              </div>
+
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2"
+              >
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-royal hover:bg-blue-700 text-white font-heading font-bold text-sm shadow-md hover:shadow-lg transition-all"
+                >
+                  <span>📨 Gửi lời nhắn</span>
+                </button>
+                <span class="text-xs text-slate-500">
+                  Phản hồi xác nhận ngay trên màn hình sau khi gửi.
+                </span>
+              </div>
+            </form>
+
+            <!-- Hộp xác nhận sau khi gửi -->
+            <div
+              id="contact-confirmation"
+              class="hidden mt-5 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900"
+            >
+              <div class="flex items-start gap-3">
+                <span class="text-xl">✅</span>
+                <div class="text-sm space-y-1">
+                  <div class="font-heading font-bold text-emerald-950">
+                    Đã ghi nhận lời nhắn của bạn!
+                  </div>
+                  <p
+                    id="confirmation-detail"
+                    class="text-emerald-800 leading-relaxed"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-navy text-blue-100 py-8 border-t border-blue-900">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+      >
+        <div>
+          <div
+            class="font-heading font-extrabold text-white text-sm sm:text-base"
+          >
+            TRẦN HẢI SANG • Ngành Sư phạm Tin học Khóa 50
+          </div>
+          <div class="text-xs text-blue-200/80 mt-0.5">
+            Trường Sư phạm, Đại học Cần Thơ
+          </div>
+          <div class="text-xs text-blue-200/80 mt-0.5">
+            Số điện thoại: 0839 010 106
+          </div>
+          <div class="text-xs text-blue-200/80 mt-0.5">
+            Email: sangb2408108@student.ctu.edu.vn
+          </div>
+        </div>
+        <div class="text-xs text-amber-300 font-semibold">
+          Thắp lửa bằng đam mê - Giữ lửa bằng lòng kiên nhẫn
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== MODAL XEM CHI TIẾT DỰ ÁN ==================== -->
+    <div
+      id="project-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy/70 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200"
+      >
+        <div class="p-6 sm:p-8 space-y-5">
+          <div
+            class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4"
+          >
+            <div>
+              <span
+                id="modal-category"
+                class="inline-block px-3 py-1 rounded-full text-xs font-heading font-bold bg-blue-50 text-royal mb-2"
+              ></span>
+              <h3
+                id="modal-title"
+                class="font-heading font-extrabold text-xl sm:text-2xl text-navy"
+              ></h3>
+            </div>
+            <button
+              type="button"
+              onclick="closeProjectModal()"
+              class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors shrink-0"
+              aria-label="Đóng cửa sổ chi tiết"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <p
+            id="modal-summary"
+            class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium"
+          ></p>
+
+          <div
+            class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 sm:p-5 space-y-2.5"
+          >
+            <div
+              class="text-xs font-heading font-bold uppercase tracking-wider text-navy"
+            >
+              Đặc điểm
+            </div>
+            <ul
+              id="modal-highlights"
+              class="space-y-2 text-sm text-slate-700 list-disc pl-5"
+            ></ul>
+          </div>
+
+          <div
+            class="rounded-2xl bg-amberSoft/60 border border-amber-200/80 p-4 space-y-1"
+          >
+            <div
+              class="text-xs font-heading font-bold uppercase tracking-wider text-amber-900"
+            >
+              Giá trị cốt lõi
+            </div>
+            <p
+              id="modal-value"
+              class="text-sm text-slate-800 leading-relaxed"
+            ></p>
+          </div>
+
+          <div>
+            <div
+              class="text-xs font-heading font-bold uppercase tracking-wider text-slate-500 mb-2"
+            >
+              Bao gồm
+            </div>
+            <div id="modal-tech" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex justify-end">
+            <a
+              id="modal-doc-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 text-slate-900 font-semibold hover:bg-amber-400 transition"
+            >
+              📄 Mở tài liệu
+            </a>
+            <button
+              type="button"
+              onclick="closeProjectModal()"
+              class="px-5 py-2.5 rounded-xl bg-navy hover:bg-navyLight text-white font-heading font-bold text-sm transition-colors"
+              style="margin-left: 10px"
+            >
+              Đóng lại
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT TƯƠNG TÁC ==================== -->
+    <script src="script.js"></script>
+  </body>
+</html>
